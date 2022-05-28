@@ -226,7 +226,7 @@ def get_gruen(candidates):
     # We do not release the code for the coherence score calculation for this version.
     # We are working on a more efficient and reliable approach now and will release it later.
     gruen_score = [min(1, max(0, sum(i))) for i in zip(grammaticality_score, redundancy_score, focus_score)]
-    return gruen_score
+    return gruen_score, grammaticality_score, redundancy_score, focus_score
 
 
 if __name__ == "__main__":
@@ -236,5 +236,8 @@ if __name__ == "__main__":
         print(f"Argument {i:>6}: {arg}")
         candidates.append(arg)
     
-    gruen_score = get_gruen(candidates)
-    print(gruen_score)
+    gruen_score, grammaticality_score, redundancy_score, focus_score = get_gruen(candidates)
+    print("gruen_score", gruen_score)
+    print("grammaticality_score", grammaticality_score)
+    print("redundancy_score", redundancy_score)
+    print("focus_score", focus_score)
