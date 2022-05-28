@@ -12,6 +12,7 @@ from transformers import BertConfig, BertForSequenceClassification, BertTokenize
 from transformers import glue_convert_examples_to_features
 from transformers.data.processors.utils import InputExample
 from wmd import WMD
+import sys
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -229,7 +230,11 @@ def get_gruen(candidates):
 
 
 if __name__ == "__main__":
-    candidates = ["This is a good example.",
-                  "This is a bad example. It is ungrammatical and redundant. Orellana shown red card for throwing grass at Sergio Busquets. Orellana shown red card for throwing grass at Sergio Busquets."]
+    candidates = []
+    print(f"Arguments count: {len(sys.argv)}")
+    for i, arg in enumerate(sys.argv):
+        print(f"Argument {i:>6}: {arg}")
+        candidates.append(arg)
+    
     gruen_score = get_gruen(candidates)
     print(gruen_score)
