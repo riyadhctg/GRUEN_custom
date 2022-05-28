@@ -1,4 +1,3 @@
-difflib
 editdistance
 nltk
 numpy
