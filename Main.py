@@ -236,6 +236,5 @@ if __name__ == "__main__":
         print(f"Argument {i:>6}: {arg}")
         candidates.append(arg)
     
-    gruen_score, grammaticality_score, redundancy_score, focus_score = get_gruen(candidates)
+    gruen_score = get_gruen(candidates)
     print("gruen_score", gruen_score)
-    return gruen_score
